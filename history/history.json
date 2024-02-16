@@ -1,0 +1,22 @@
+{
+  "42b4a115007c35c622675a0baedb491a" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 1,
+      "skipped" : 0,
+      "passed" : 0,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "e7d6ee978b9ce420",
+      "status" : "broken",
+      "statusDetails" : "selenium.common.exceptions.SessionNotCreatedException: Message: Expected browser binary location, but unable to find binary in default location, no 'moz:firefoxOptions.binary' capability provided, and no binary flag set on the command line",
+      "time" : {
+        "start" : 1708062317471,
+        "stop" : 1708062317471,
+        "duration" : 0
+      }
+    } ]
+  }
+}
