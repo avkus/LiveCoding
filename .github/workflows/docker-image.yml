@@ -14,10 +14,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    -name: Run UI-tests via docker-compose
+    - name: Run UI-tests via docker-compose
       env:
-        LOGIN: ${{secrets.LOGIN}}
-        PASSWORD: ${{secrets.LOGIN}}
+         LOGIN: ${{secrets.LOGIN}}
+         PASSWORD: ${{secrets.LOGIN}}
       run: |
         docker-compose up --exit-code-from regression || true
 
