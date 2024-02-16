@@ -1,0 +1,34 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    -name: Run UI-tests via docker-compose
+      env:
+        LOGIN: ${{secrets.LOGIN}}
+        PASSWORD: ${{secrets.LOGIN}}
+      run: |
+        docker-compose up --exit-code-from regression || true
+
+    - name: Generate Allure report
+      run:
+        sudo docker-compose run regression /bin/sh -c "allure generate allure-results --clean -oallure-report"
+
+    - name: Deploy to GitHub Pages
+      uses: James/github-pages-deploy-action@4.1.5
+      with:
+        token: ${{secrets.CLI_TOKEN}}
+        branch: gh-pages
+        folder: allure-report
+        clean: true
